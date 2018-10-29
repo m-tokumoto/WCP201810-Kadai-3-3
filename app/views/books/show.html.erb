@@ -34,11 +34,11 @@
 											<th clospan="3"></th>
 										</tr>
 									</thead>
-									
+
 									<tbody>
 										<tr>
 											<td>
-												<%= link_to user_path(@boook.user.id) do %>
+												<%= link_to user_path(@boook.user.id),class:"user_#{@boook.user.id}" do %>
 													<%= attachment_image_tag @boook.user, :image, :fill, 80, 80,fallback: "no_image.jpg" ,format:'jpeg' %><br />
 													<%= @boook.user.name %>
 												<% end %>
