@@ -1,0 +1,52 @@
+<html>
+<head>
+</head>
+
+<body>
+	<div class='body'>
+			<div class= 'container'>
+				
+				<p id= "notice"></p>
+				
+				
+				<div class="row">
+					<div class="col-md-3">
+						<p></p>
+						<%= render 'users/user-info-section',user: @user %>
+					
+						<div class="row">
+							<div class="col-md-12">
+
+								<%= render 'books/newbook-form',book:@book %>
+
+							</div>
+						</div>
+					</div>
+
+							<div class = 'col-md-9'>
+								<h2>Users</h2>
+								<table class ='table table-hover table-inverse'>
+									<thead>
+										<tr>
+											<th>Image</th>
+											<th>Name</th>
+											<th></th>
+											<th clospan="3"></th>
+										</tr>
+									</thead>
+									
+									<tbody>
+										<% @users.each do |user| %>
+										<tr>
+											<th><%= attachment_image_tag user,:image, :fill, 80, 80,fallback: "no_image.jpg", format:'jpeg' %></th>
+											<th><%= user.name %></th>
+											<th><%= link_to "Show",user_path(user.id),class:"user_#{user.id}" %></th>
+										</tr>
+										<% end %>
+									</tbody>
+								</table>
+							</div>
+					</div>
+				</div>
+			</div>
+</body>

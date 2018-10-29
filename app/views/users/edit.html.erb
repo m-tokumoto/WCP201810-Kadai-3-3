@@ -1,0 +1,17 @@
+<h2>Edit Profile</h2>
+
+<%= form_for(@user) do |f| %>
+
+	<label>Name</label>
+	<%= f.text_field :name, class:"name" %>
+
+	<label>Image</label>
+	<%= f.attachment_field :image, class:"user_image" %>
+
+	<label>Introduction</label>
+	<%= f.text_field :introduction,class:"introduction" %>
+
+
+	<%= f.submit "Update User" %>
+
+<% end %>

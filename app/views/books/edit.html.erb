@@ -1,0 +1,14 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<h2>Editing book</h2>
+			<%= form_for(@book) do |f| %>
+				<p>title</p>
+				<%= f.text_field :book_title, class:"book_title" %>
+				<p>opinion</p>
+				<%= f.text_area :book_body, class:"book_boby" %>
+				<%= f.submit 'Update Book' %>
+			<% end %>
+		</div>
+	</div>
+</div>

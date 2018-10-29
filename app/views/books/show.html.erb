@@ -1,0 +1,66 @@
+<html>
+<head>
+</head>
+
+<body>
+	<div class='body'>
+			<div class= 'container'>
+				
+				<p id= "notice"></p>
+				
+				
+				<div class="row">
+					<div class="col-md-3">
+						
+						<%= render 'users/user-info-section',user: @boook.user %>
+					
+						<div class="row">
+							<div class="col-md-12">
+								
+								<%= render 'books/newbook-form',book:@book %>
+
+							</div>
+						</div>
+					</div>
+
+							<div class = 'col-md-9'>
+								<h2>Book Detail</h2>
+								<table class ='table table-hover table-inverse'>
+									<thead>
+										<tr>
+											<th></th>
+											<th>Title</th>
+											<th>Opinion</th>
+											<th clospan="3"></th>
+										</tr>
+									</thead>
+									
+									<tbody>
+										<tr>
+											<td>
+												<%= link_to user_path(@boook.user.id) do %>
+													<%= attachment_image_tag @boook.user, :image, :fill, 80, 80,fallback: "no_image.jpg" ,format:'jpeg' %><br />
+													<%= @boook.user.name %>
+												<% end %>
+											</td>
+											<td><%= @boook.book_title %></td>
+											<td><%= @boook.book_body %></td>
+										    <td>
+										    	<% if @boook.user == current_user %>
+										    	  <%= link_to "Edit",edit_book_path(@boook.id),class:"edit_book_#{@boook.id}" %>
+										    	<% end %>
+										    </td>
+											<td>
+												<% if @boook.user == current_user %>
+												  <%= link_to "Destroy",book_path(@boook.id),class:"destroy_book_#{@boook.id}",method: :delete %>
+												<% end %>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+					</div>
+				</div>
+			</div>
+
+</body>
