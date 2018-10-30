@@ -28,14 +28,23 @@ class BooksController < ApplicationController
     end
 
     def edit
-        @book = Book.new
         @book = Book.find(params[:id])
+        if @book.user.id != current_user.id
+            flash[:notice] = "access dinied"
+            redirect_to "/"
+        end
     end
 
     def destroy
         @book = Book.find(params[:id])
-        @book.destroy
-        redirect_to books_path
+        if @book.user.id != current_user.id
+            flash[:notice] = "access dinied"
+            redirect_to "/"
+        else
+            @book.destroy
+            flash[:notice] = "successfully deleted book"
+            redirect_to books_path
+        end
     end
 
     def update
